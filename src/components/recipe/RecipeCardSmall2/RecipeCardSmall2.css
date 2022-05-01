@@ -1,0 +1,27 @@
+.rcs2-card-container {
+    width: 270px !important;
+    background-color: #f3f3f3 !important;
+    box-shadow: none !important;
+
+    border-radius: 25px !important;
+    position: relative !important;
+}
+
+.rcs2-card-time {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.rcs-card-actions-container {
+    position: absolute !important;
+    top: 10px !important;
+    left: 200px !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(5px) !important;
+    border-radius: 25px !important;
+}
+
+.rcs2-card-actions-container:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}

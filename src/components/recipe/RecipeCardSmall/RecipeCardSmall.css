@@ -1,0 +1,7 @@
+.rcs-card-container {
+    width: 250px !important;
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+    border-radius: 25px !important;
+    position: relative !important;
+}
