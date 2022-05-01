@@ -1,0 +1,35 @@
+.incrementButtonCard--container {
+    background: #f1f1f1;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.incrementButtonCard--label svg {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    color: #E23E3E;
+    background: #ffffff;
+}
+
+.incrementButtonCard--increment-num {
+    font-size: 1rem !important;
+}
+
+.incrementButtonCard--increment-btn {
+    width: 20px;
+    height: 20px;
+    /* color: #1e1e1e;
+    border-color: #1e1e1e; */
+}
+
+.incrementButtonCard--label {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-weight: 500;
+}

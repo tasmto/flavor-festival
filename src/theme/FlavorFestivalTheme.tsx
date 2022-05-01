@@ -22,7 +22,7 @@ export const theme = createTheme({
       main: '#E23E3E',
     },
     secondary: {
-      main: '#f50057',
+      main: '#f1f1f1',
     },
   },
   typography: {
