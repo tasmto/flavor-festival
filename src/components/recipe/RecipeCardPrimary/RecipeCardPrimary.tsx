@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, FC } from 'react';
-import './RecipeCardMajor.css';
+import React, { useState, useEffect, useRef } from 'react';
+import './RecipeCardPrimary.css';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -18,23 +18,12 @@ import {
   BiTimer,
   BiDotsHorizontalRounded,
 } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
 
-type Props = {
-  width?: string;
-  recipe: {
-    publisher: string;
-    image_url: string;
-    title: string;
-    id: string;
-  };
-};
-const RecipeReviewCard: React.FC<Props> = ({ width = '300px', recipe }) => {
+const RecipeCardPrimary = ({ width = '300px' }) => {
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorElement, setMenuAnchorElement] = useState(null);
   const navigate = useNavigate();
-  const { publisher, image_url, title, id } = recipe;
 
   useEffect(() => {
     setTimeout(() => {
@@ -63,18 +52,19 @@ const RecipeReviewCard: React.FC<Props> = ({ width = '300px', recipe }) => {
 
   return (
     <Card className='rcm-card-container' style={{ width }}>
-      <CardMedia
-        style={{ borderRadius: '15px' }}
-        component='img'
-        height='194'
-        image={
-          image_url ||
-          'http://forkify-api.herokuapp.com/images/pizza292x2007a259a79.jpg'
-        }
-        alt={recipe.title || 'Paella dish'}
-        style={{ cursor: 'pointer' }}
-        onClick={handleSeeFullRecipe}
-      />
+      {loading ? (
+        <Skeleton sx={{ height: 194 }} animation='wave' variant='rectangular' />
+      ) : (
+        <CardMedia
+          style={{ borderRadius: '15px' }}
+          component='img'
+          height='194'
+          image='http://forkify-api.herokuapp.com/images/pizza292x2007a259a79.jpg'
+          alt='Paella dish'
+          style={{ cursor: 'pointer' }}
+          onClick={handleSeeFullRecipe}
+        />
+      )}
       <Typography className='rcm-card-time' color='text.primary' gutterBottom>
         <BiTimer />
         {loading ? <Skeleton width='100px' /> : '15min'}
@@ -101,7 +91,11 @@ const RecipeReviewCard: React.FC<Props> = ({ width = '300px', recipe }) => {
           </IconButton>
         }
         title={
-          loading ? <Skeleton animation='wave' width='80%' /> : recipe.publisher
+          loading ? (
+            <Skeleton animation='wave' width='80%' />
+          ) : (
+            'By: Shrimp and Chorizo'
+          )
         }
       />
       <Menu
@@ -125,7 +119,7 @@ const RecipeReviewCard: React.FC<Props> = ({ width = '300px', recipe }) => {
               <Skeleton animation='wave' width='80%' />
             </React.Fragment>
           ) : (
-            recipe.title || 'How to make sushi at home' //limit to 40 chars
+            'How to make sushi at home'
           )}
         </Typography>
       </CardContent>
@@ -141,4 +135,4 @@ const RecipeReviewCard: React.FC<Props> = ({ width = '300px', recipe }) => {
   );
 };
 
-export default RecipeReviewCard;
+export default RecipeCardPrimary;

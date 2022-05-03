@@ -19,6 +19,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='*' element={<NotFoundScreen />} />
+
             <Route path='/' element={<HomeScreen />} />
             <Route path='/search' element={<SearchScreen />} />
             <Route path='/saved' element={<BookmarksScreen />} />

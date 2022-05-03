@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RecipeCardSmall2.css';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -19,11 +20,21 @@ import {
   BiDotsHorizontalRounded,
 } from 'react-icons/bi';
 
-const RecipeCardSmall2 = () => {
+type Props = {
+  recipe: {
+    publisher: string;
+    image_url: string;
+    title: string;
+    id: string;
+  };
+};
+
+const RecipeCardSmall2: React.FC<Props> = ({ recipe }) => {
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorElement, setMenuAnchorElement] = useState(null);
-
+  const { publisher, image_url, title, id } = recipe;
+  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -31,7 +42,7 @@ const RecipeCardSmall2 = () => {
   }, []);
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setMenuAnchorElement(event?.currentTarget);
+    setMenuAnchorElement(event.target);
     setMenuOpen(true);
   };
   const handleClose = () => {
@@ -45,6 +56,12 @@ const RecipeCardSmall2 = () => {
     handleClose();
   };
 
+  // The image or linkable component is clicked
+  const handleSeeFullRecipe = () => {
+    navigate(`/recipes/${id}`);
+  };
+
+  if (!recipe) return null;
   return (
     <Card className='rcs2-card-container'>
       {loading ? (
@@ -53,8 +70,10 @@ const RecipeCardSmall2 = () => {
         <CardMedia
           component='img'
           height='194'
-          image='http://forkify-api.herokuapp.com/images/pizza292x2007a259a79.jpg'
-          alt='Paella dish'
+          image={image_url}
+          alt={title}
+          style={{ cursor: 'pointer' }}
+          onClick={handleSeeFullRecipe}
         />
       )}
 
@@ -70,7 +89,7 @@ const RecipeCardSmall2 = () => {
           component='h6'
           gutterBottom
         >
-          This is the heading
+          {title}
         </Typography>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography

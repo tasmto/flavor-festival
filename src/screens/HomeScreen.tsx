@@ -16,7 +16,13 @@ import { Scrollbar, Autoplay } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
-import SearchInput from '../components/features/search/SearchInput';
+import SearchInput from '../components/Search/SearchInput';
+import SearchTermSlider from '../components/Search/SearchTermSlider';
+import {
+  featuredRandom,
+  recentRandom,
+  popularRandom,
+} from '../data/LocalRecipes';
 
 const HomeScreen = () => {
   return (
@@ -30,7 +36,7 @@ const HomeScreen = () => {
               component='h4'
               style={{
                 marginTop: '30px',
-                marginBottom: '-20px',
+                marginBottom: '-30px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
@@ -45,40 +51,40 @@ const HomeScreen = () => {
           </Grid>
           <Grid item xs={12} container rowSpacing={2} columnSpacing={2}>
             <Grid item xs={12} container spacing={2}>
-              <Grid item xs={9}>
+              <Grid item xs={8}>
                 <Typography
                   variant='h5'
                   fontWeight='600'
                   gutterBottom
                   component='h4'
                 >
-                  Find your next meal 🔥
+                  Trending meals 🔥
                 </Typography>
               </Grid>
-              <Grid item xs={3}>
-                <Button variant='text'>
-                  See All{' '}
-                  <BiRightArrowAlt style={{ width: '25px', height: '25px' }} />
+              <Grid item xs={4}>
+                <Button
+                  style={{}}
+                  variant='text'
+                  startIcon={
+                    <BiRightArrowAlt
+                      style={{ width: '25px', height: '25px' }}
+                    />
+                  }
+                >
+                  See All
                 </Button>
               </Grid>
             </Grid>
             <Grid item xs={12}>
               <Swiper spaceBetween={-95} slidesPerView={'auto'}>
-                <SwiperSlide>
-                  <RecipeReviewCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeReviewCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeReviewCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeReviewCard />
-                </SwiperSlide>
+                {featuredRandom.map((recipe) => (
+                  <SwiperSlide key={recipe.id}>
+                    <RecipeReviewCard recipe={recipe} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </Grid>
-          </Grid>
+          </Grid>{' '}
           <Grid item xs={12} container rowSpacing={2} columnSpacing={2}>
             <Grid item xs={12}>
               <Typography
@@ -93,19 +99,16 @@ const HomeScreen = () => {
             </Grid>
 
             <Grid item xs={12}>
-              <Swiper spaceBetween={-145} slidesPerView={'auto'}>
-                <SwiperSlide>
-                  <RecipeCardSmall />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeCardSmall />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeCardSmall />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeCardSmall />
-                </SwiperSlide>
+              <SearchTermSlider />
+            </Grid>
+
+            <Grid item xs={12}>
+              <Swiper spaceBetween={-125} slidesPerView={'auto'}>
+                {popularRandom.map((recipe) => (
+                  <SwiperSlide key={recipe.id}>
+                    <RecipeCardSmall2 recipe={recipe} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </Grid>
           </Grid>
@@ -123,143 +126,12 @@ const HomeScreen = () => {
             </Grid>
 
             <Grid item xs={12}>
-              <Swiper
-                modules={[Scrollbar, Autoplay]}
-                spaceBetween={-280}
-                slidesPerView='auto'
-                scrollbar={{ draggable: true }}
-                autoplay={{ delay: 3000 }}
-              >
-                <SwiperSlide
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'stretch',
-                    alignItems: 'stretch',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '120px', textAlign: 'center' }}
-                    variant='outlined'
-                  >
-                    cauliflower
-                  </Button>
-                </SwiperSlide>
-                <SwiperSlide
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'stretch',
-                    alignItems: 'stretch',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '120px', textAlign: 'center' }}
-                    variant='outlined'
-                  >
-                    carrot
-                  </Button>
-                </SwiperSlide>
-                <SwiperSlide
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'stretch',
-                    alignItems: 'stretch',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '120px', textAlign: 'center' }}
-                    variant='outlined'
-                  >
-                    broccoli
-                  </Button>
-                </SwiperSlide>
-                <SwiperSlide
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'stretch',
-                    alignItems: 'stretch',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '120px', textAlign: 'center' }}
-                    variant='outlined'
-                  >
-                    asparagus
-                  </Button>
-                </SwiperSlide>
-                <SwiperSlide
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'stretch',
-                    alignItems: 'stretch',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '120px', textAlign: 'center' }}
-                    variant='outlined'
-                  >
-                    corn
-                  </Button>
-                </SwiperSlide>
-                <SwiperSlide
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'stretch',
-                    alignItems: 'stretch',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '120px', textAlign: 'center' }}
-                    variant='outlined'
-                  >
-                    cucumber
-                  </Button>
-                </SwiperSlide>
-
-                <SwiperSlide
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'stretch',
-                    alignItems: 'stretch',
-                    width: '100%',
-                    textAlign: 'center',
-                  }}
-                >
-                  <Button
-                    style={{ width: '120px', textAlign: 'center' }}
-                    variant='outlined'
-                  >
-                    lettuce
-                  </Button>
-                </SwiperSlide>
-              </Swiper>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Swiper spaceBetween={-125} slidesPerView={'auto'}>
-                <SwiperSlide>
-                  <RecipeCardSmall2 />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeCardSmall2 />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeCardSmall2 />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <RecipeCardSmall2 />
-                </SwiperSlide>
+              <Swiper spaceBetween={-145} slidesPerView={'auto'}>
+                {recentRandom.map((recipe) => (
+                  <SwiperSlide key={recipe.id}>
+                    <RecipeCardSmall recipe={recipe} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </Grid>
           </Grid>

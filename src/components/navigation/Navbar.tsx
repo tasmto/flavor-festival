@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -19,6 +20,11 @@ export default function LabelBottomNavigation() {
     navigate(newValue);
     setValue(newValue);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setValue(`${location.pathname}`);
+  }, [location]);
 
   return (
     <BottomNavigation

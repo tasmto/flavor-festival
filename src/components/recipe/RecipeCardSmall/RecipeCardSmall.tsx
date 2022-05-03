@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RecipeCardSmall.css';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -19,10 +20,21 @@ import {
   BiDotsHorizontalRounded,
 } from 'react-icons/bi';
 
-const RecipeCardSmall = () => {
+type Props = {
+  recipe: {
+    publisher: string;
+    image_url: string;
+    title: string;
+    id: string;
+  };
+};
+
+const RecipeCardSmall: React.FC<Props> = ({ recipe }) => {
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchorElement, setMenuAnchorElement] = useState(null);
+  const { publisher, image_url, title, id } = recipe;
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -45,6 +57,11 @@ const RecipeCardSmall = () => {
     handleClose();
   };
 
+  // The image or linkable component is clicked
+  const handleSeeFullRecipe = () => {
+    navigate(`/recipes/${id}`);
+  };
+
   return (
     <Card className='rcs-card-container'>
       {loading ? (
@@ -58,9 +75,10 @@ const RecipeCardSmall = () => {
         <CardMedia
           component='img'
           height='200'
-          image='http://forkify-api.herokuapp.com/images/pizza292x2007a259a79.jpg'
+          image={image_url}
           alt='Paella dish'
-          style={{ borderRadius: '25px', margin: 'auto' }}
+          style={{ borderRadius: '25px', margin: 'auto', cursor: 'pointer' }}
+          onClick={handleSeeFullRecipe}
         />
       )}
       <Typography className='rcm-card-time' color='text.primary' gutterBottom>
@@ -77,7 +95,7 @@ const RecipeCardSmall = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Open recipe</MenuItem>
+        <MenuItem onClick={handleSeeFullRecipe}>Open recipe</MenuItem>
         <MenuItem onClick={handleCopyLink}>Copy link</MenuItem>
         <MenuItem onClick={handleClose}>Close</MenuItem>
       </Menu>
@@ -89,11 +107,11 @@ const RecipeCardSmall = () => {
               <Skeleton animation='wave' width='80%' />
             </React.Fragment>
           ) : (
-            'How to make pizza in the summer'
+            title
           )}
         </Typography>
         <Typography color='text.primary' style={{ marginTop: '10px' }}>
-          {loading ? <Skeleton animation='wave' /> : 'By Name namerson'}
+          {loading ? <Skeleton animation='wave' /> : publisher}
         </Typography>
       </CardContent>
     </Card>
