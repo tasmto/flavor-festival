@@ -17,7 +17,7 @@ import { toast } from 'react-toastify';
 import {
   BiBookmarkAlt,
   BiShareAlt,
-  BiTimer,
+  BiBadgeCheck,
   BiDotsHorizontalRounded,
 } from 'react-icons/bi';
 
@@ -88,8 +88,8 @@ const RecipeCardSmall: React.FC<Props> = ({ recipe }) => {
         />
       )}
       <Typography className='rcm-card-time' color='text.primary' gutterBottom>
-        <BiTimer />
-        {loading ? <Skeleton width='100px' /> : '15min'}
+        <BiBadgeCheck />
+        {loading ? <Skeleton width='100px' /> : 'Verified'}
       </Typography>
 
       <Menu

@@ -60,8 +60,6 @@ const SearchResults: React.FC<Props> = ({ searchResults }) => {
       ) : (
         <Typography
           component='p'
-          gutterTop
-          gutterBottom
           style={{ textAlign: 'center', marginTop: '20px' }}
         >
           You've reached the end of the recipes we have.

@@ -11,7 +11,7 @@ import Chip from '@mui/material/Chip';
 import {
   BiBookmarkAlt,
   BiShareAlt,
-  BiTimer,
+  BiBadgeCheck,
   BiDotsHorizontalRounded,
 } from 'react-icons/bi';
 import {

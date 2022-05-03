@@ -23,7 +23,11 @@ const IncrementButtonCard = ({
   id,
 }: BtnProps) => {
   return (
-    <Typography variant='h6' className='incrementButtonCard--container'>
+    <Typography
+      variant='h6'
+      className='incrementButtonCard--container'
+      color='#303030'
+    >
       <span className='incrementButtonCard--label'>
         {labelIcon}
         {label}

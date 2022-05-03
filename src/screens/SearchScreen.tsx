@@ -58,7 +58,7 @@ const SearchScreen = () => {
     if (search) fetchSearchedListings();
     else setLoading(false);
   }, [search]);
-
+  if (loading) return <Spinner />;
   return (
     <div className='container' style={{ paddingBottom: '80px' }}>
       <Box sx={{ flexGrow: 1 }}>

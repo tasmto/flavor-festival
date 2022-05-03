@@ -10,6 +10,7 @@ import {
   BiSearch,
   BiUser,
 } from 'react-icons/bi';
+import BarImage from '../../assets/bg.svg';
 
 export default function LabelBottomNavigation() {
   const location = useLocation();
@@ -31,6 +32,19 @@ export default function LabelBottomNavigation() {
       className='navigation'
       value={value}
       onChange={handleChange}
+      style={{
+        backgroundColor: '#ffffff2b',
+        backdropFilter: 'blur(1px)',
+        backgroundImage: `url(${BarImage})`,
+        backgroundSize: 'contain',
+        backgroundPosition: 'top center',
+        backgroundRepeat: 'no-repeat',
+        height: '80px',
+        boxShadow: 'none',
+        paddingLeft: '10px',
+        paddingRight: '10px',
+        left: '-45%',
+      }}
     >
       <BottomNavigationAction label='Home' value='/' icon={<BiHomeAlt />} />
       <BottomNavigationAction
@@ -38,7 +52,24 @@ export default function LabelBottomNavigation() {
         value='/saved'
         icon={<BiBookmarkAlt />}
       />
-      <BottomNavigationAction label='New' value='/create' icon={<BiPlus />} />
+      <BottomNavigationAction
+        label='New'
+        value='/create'
+        style={{ transform: 'translateY(-50%)' }}
+        icon={
+          <span
+            style={{
+              backgroundColor: 'rgb(158, 43, 43)',
+              color: '#ffffff',
+              border: '20px solid rgb(158, 43, 43)',
+              borderRadius: '100%',
+              marginBottom: '5px',
+            }}
+          >
+            <BiPlus />
+          </span>
+        }
+      />
       <BottomNavigationAction
         label='Search'
         value='/search'

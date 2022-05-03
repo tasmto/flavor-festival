@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 import {
   BiBookmarkAlt,
   BiShareAlt,
-  BiTimer,
+  BiBadgeCheck,
   BiDotsHorizontalRounded,
 } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
@@ -70,7 +70,7 @@ const RecipeReviewCard: React.FC<Props> = ({ width = '300px', recipe }) => {
   return (
     <Card className='rcm-card-container' style={{ width }}>
       <CardMedia
-        style={{ borderRadius: '15px' }}
+        style={{ borderRadius: '15px',cursor: 'pointer' }}
         component='img'
         height='194'
         image={
@@ -78,12 +78,11 @@ const RecipeReviewCard: React.FC<Props> = ({ width = '300px', recipe }) => {
           'http://forkify-api.herokuapp.com/images/pizza292x2007a259a79.jpg'
         }
         alt={recipe.title || 'Paella dish'}
-        style={{ cursor: 'pointer' }}
         onClick={handleSeeFullRecipe}
       />
       <Typography className='rcm-card-time' color='text.primary' gutterBottom>
-        <BiTimer />
-        {loading ? <Skeleton width='100px' /> : '15min'}
+        <BiBadgeCheck />
+        {loading ? <Skeleton width='100px' /> : 'Verified'}
       </Typography>
       <CardHeader
         style={{ paddingBottom: 0 }}
