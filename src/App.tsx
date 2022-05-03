@@ -11,6 +11,8 @@ import ProfileScreen from './screens/ProfileScreen';
 import SearchScreen from './screens/SearchScreen';
 import SingleRecipeScreen from './screens/SingleRecipeScreen';
 import SplashScreen from './screens/SplashScreen';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -26,10 +28,11 @@ function App() {
             <Route path='/create' element={<CreateRecipe />} />
             <Route path='/profile' element={<ProfileScreen />} />
             <Route path='/recipes/' element={<HomeScreen />} />
-            <Route path='/recipes/:recipeId' element={<SingleRecipeScreen />} />
+            <Route path='/recipes/:id' element={<SingleRecipeScreen />} />
             <Route path='/welcome' element={<SplashScreen />} />
           </Routes>
 
+          <ToastContainer />
           <Navbar />
         </Router>
       </ThemeProvider>

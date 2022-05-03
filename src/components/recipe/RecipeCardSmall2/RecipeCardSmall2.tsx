@@ -12,6 +12,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { toast } from 'react-toastify';
 
 import {
   BiBookmarkAlt,
@@ -52,7 +53,12 @@ const RecipeCardSmall2: React.FC<Props> = ({ recipe }) => {
 
   //Share button or copy link initiated
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(`${window.location.href}`);
+    navigator.clipboard.writeText(`${window.location.origin}/recipes/${id}`);
+    toast('Link Copied', {
+      position: 'top-left',
+      hideProgressBar: true,
+      progress: undefined,
+    });
     handleClose();
   };
 
@@ -89,7 +95,9 @@ const RecipeCardSmall2: React.FC<Props> = ({ recipe }) => {
           component='h6'
           gutterBottom
         >
-          {title}
+          {recipe.title.length > 40
+            ? recipe.title.substring(0, 40 - 3) + '...'
+            : recipe.title}
         </Typography>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography

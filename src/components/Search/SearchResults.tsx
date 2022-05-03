@@ -39,22 +39,34 @@ const SearchResults: React.FC<Props> = ({ searchResults }) => {
         .map((recipe) => (
           <RecipeReviewCard key={recipe.id} recipe={recipe} width='100%' />
         ))}
-      <Stack
-        spacing={2}
-        direction='row'
-        alignItems='center'
-        justifyContent='center'
-        style={{ marginTop: '20px' }}
-      >
-        <Pagination
-          count={totalPages}
-          showFirstButton
-          showLastButton
-          onChange={handleChangePage}
-          size='large'
-          page={currentPage}
-        />
-      </Stack>
+
+      {totalPages > 1 ? (
+        <Stack
+          spacing={2}
+          direction='row'
+          alignItems='center'
+          justifyContent='center'
+          style={{ marginTop: '20px' }}
+        >
+          <Pagination
+            count={totalPages}
+            showFirstButton
+            showLastButton
+            onChange={handleChangePage}
+            size='large'
+            page={currentPage}
+          />
+        </Stack>
+      ) : (
+        <Typography
+          component='p'
+          gutterTop
+          gutterBottom
+          style={{ textAlign: 'center', marginTop: '20px' }}
+        >
+          You've reached the end of the recipes we have.
+        </Typography>
+      )}
     </>
   );
 };
