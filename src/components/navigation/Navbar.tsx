@@ -44,6 +44,7 @@ export default function LabelBottomNavigation() {
         paddingLeft: '10px',
         paddingRight: '10px',
         left: '-45%',
+        bottom: '10px',
       }}
     >
       <BottomNavigationAction label='Home' value='/' icon={<BiHomeAlt />} />

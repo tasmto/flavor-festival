@@ -60,7 +60,7 @@ const SearchScreen = () => {
   }, [search]);
   if (loading) return <Spinner />;
   return (
-    <div className='container' style={{ paddingBottom: '80px' }}>
+    <div className='container' style={{ paddingBottom: '130px' }}>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container rowSpacing={2} columnSpacing={2}>
           <Grid item xs={12}>

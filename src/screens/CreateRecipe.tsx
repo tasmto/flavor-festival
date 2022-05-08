@@ -90,7 +90,7 @@ const CreateRecipe = () => {
   const handleAddRecipe = () => {};
 
   return (
-    <div className='container' style={{ paddingBottom: '80px' }}>
+    <div className='container' style={{ paddingBottom: '140px' }}>
       <Grid container rowSpacing={4} columnSpacing={2}>
         <Grid item xs={12}>
           <Typography

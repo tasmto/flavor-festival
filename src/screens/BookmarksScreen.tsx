@@ -54,7 +54,7 @@ const BookmarksScreen = () => {
     setValue(newValue);
   };
   return (
-    <div className='container' style={{ paddingBottom: '80px' }}>
+    <div className='container' style={{ paddingBottom: '100px' }}>
       <Grid container rowSpacing={2} columnSpacing={2}>
         <Grid item xs={12}>
           <Typography
